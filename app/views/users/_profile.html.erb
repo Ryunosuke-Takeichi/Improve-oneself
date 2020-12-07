@@ -1,0 +1,30 @@
+<table class="table table-hover">
+  <div class="col-xs-12">
+    <h3>プロフィール</h3>
+  </div>
+  <tr>
+    <th>プロフィール</th>
+    <th><%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg" %></th>
+  </tr>
+  <tr>
+    <th>ニックネーム</th>
+    <th><%= user.name %></th>
+  </tr>
+  <tr>
+    <th>ひとこと</th>
+    <th><%= user.introduction %></th>
+  </tr>
+  <tr>
+    <th>身長</th>
+    <th><%= user.height %></th>
+  </tr>
+  <tr>
+    <th>体重</th>
+    <th><%= user.weight %></th>
+  </tr>
+</table>
+<% if @user.id == current_user.id %>
+  <div class="row">
+    <%= link_to 'プロフィールを編集', edit_user_path(user), class: "col-xs-12 btn btn-default edit_user_#{user.id}" %>
+  </div>
+<% end %>

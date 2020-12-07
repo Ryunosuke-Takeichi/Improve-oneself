@@ -1,0 +1,26 @@
+<div class="body">
+  <div class="container">
+    <div class="row">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>ニックネーム</th>
+            <th>ひとこと</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+        <% @users.each do |user| %>
+          <tr>
+            <td><%= user.name %></td>
+            <td><%= user.introduction %></td>
+            <td></td>
+            <td></td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
