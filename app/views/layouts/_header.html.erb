@@ -1,6 +1,6 @@
 <header class="navbar navbar-top navbar-inverse">
   <div class="container">
-    <nav class='nav navbar-nav navbar-left' >
+    <nav class='nav navbar-nav navbar-left'>
       <span></span>
     </nav>
     <nav>
@@ -8,8 +8,8 @@
         <% if user_signed_in? %>
           <li><%= link_to 'マイページ', user_path(current_user)%></li>
           <li><%= link_to 'カレンダー' %></li>
-          <li><%= link_to 'グラフ' %></li>
-          <li><%= link_to 'タイムライン'%></li>
+          <li><%= link_to 'グラフ', weight_records_path(current_user)%></li>
+          <li><%= link_to 'タイムライン' %></li>
           <li><%= link_to '占い' %></li>
           <li><%= link_to ' ログアウト', destroy_user_session_path, method: :delete %></li>
         <% else %>

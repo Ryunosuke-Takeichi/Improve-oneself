@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<h1>体重管理</h1>
+
+<%= line_chart WeightRecord.pluck(:date, :weight) %>
+<table>
+  <thead>
+    <tr>
+      <th>体重</th>
+      <th>日付</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @weight_records.each do |weight_record| %>
+      <tr>
+        <td><%= weight_record.weight %></td>
+        <td><%= weight_record.date %></td>
+        <td><%= link_to '詳細', weight_record %></td>
+        <td><%= link_to '編集', edit_weight_record_path(weight_record) %></td>
+        <td><%= link_to '削除', weight_record, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to '体重を記録', new_weight_record_path %>

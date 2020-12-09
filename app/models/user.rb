@@ -4,7 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   attachment :profile_image
-  
+  has_many :weight_record
+  has_many :tweets
   has_many :active_relationships, class_name: "Relationship", foreign_key: :following_id
   has_many :followings, through: :active_relationships, source: :follower
   #自分がフォローしているユーザーとの関係⬆️

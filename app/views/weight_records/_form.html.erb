@@ -1,0 +1,27 @@
+<%= form_with(model: weight_record, local: true) do |form| %>
+  <% if weight_record.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(weight_record.errors.count, "error") %> prohibited this weight_record from being saved:</h2>
+
+      <ul>
+      <% weight_record.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :weight, '体重' %>
+    <%= form.text_field :weight %>
+  </div>
+  
+  <div class="field">
+    <%= form.label :date, '日付' %>
+    <%= form.datetime_field :date %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,12 @@
+<div class="body">
+  <div class="container">
+    <div class="row">
+      <div><%= link_to @tweet.user.username, user_path(@tweet.user), method: :get %></div>
+      <div><%= @tweet.created_at.strftime("%Y-%m-%d %H:%M:%S") %></div>
+      <% if user_signed_in? && current_user.id == @tweet.user_id %>
+        <div><%= link_to '削除', "/tweets/#{@tweet.id}", method: :delete %></div>
+      <% end %>
+      <div><%= simple_format(@tweet.text) %></div>
+    </div>
+  </div>
+</div>

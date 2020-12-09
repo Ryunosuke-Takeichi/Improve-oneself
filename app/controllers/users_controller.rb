@@ -8,6 +8,11 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
   
+  def user_tweets
+    @user = User.find(params[:id])
+    @tweets = Tweet.where(user_id: @user.id).all.order("created_at DESC").page(params[:page]).per(20)
+  end
+  
   def follows
     user = User.find(params[:id])
     @users = user.followings
