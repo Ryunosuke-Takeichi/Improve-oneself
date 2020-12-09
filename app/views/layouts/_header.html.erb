@@ -7,7 +7,7 @@
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
           <li><%= link_to 'マイページ', user_path(current_user)%></li>
-          <li><%= link_to 'カレンダー' %></li>
+          <li><%= link_to 'カレンダー', events_path %></li>
           <li><%= link_to 'グラフ', weight_records_path(current_user)%></li>
           <li><%= link_to 'タイムライン' %></li>
           <li><%= link_to '占い' %></li>
