@@ -23,6 +23,10 @@
     <th><%= user.weight %></th>
   </tr>
   <tr>
+    <th>BMI</th>
+    <th><%= user.bmi.round(1) %></th>
+  </tr>
+  <tr>
     <th><p><%=link_to "フォロー", follows_user_path(@user.id) %></p></th>
     <th><p><%=link_to "フォロワー", followers_user_path(@user.id) %></p></th>
     <td>
