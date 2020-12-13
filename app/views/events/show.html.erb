@@ -1,24 +1,31 @@
-<p id="notice"><%= notice %></p>
+<div class="body">
+  <div class="container">
+    <div class="row">
+      <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @event.title %>
-</p>
+        <p>
+          <strong>Title:</strong>
+          <%= @event.title %>
+        </p>
 
-<p>
-  <strong>Body:</strong>
-  <%= @event.body %>
-</p>
+        <p>
+          <strong>Body:</strong>
+          <%= @event.body %>
+        </p>
 
-<p>
-  <strong>Start date:</strong>
-  <%= @event.start_date %>
-</p>
+        <p>
+          <strong>Start date:</strong>
+          <%= @event.start_date %>
+        </p>
 
-<p>
-  <strong>End date:</strong>
-  <%= @event.end_date %>
-</p>
+        <p>
+          <strong>End date:</strong>
+          <%= @event.end_date %>
+        </p>
 
-<%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', events_path %>
+         <%= link_to '編集', edit_event_path(@event) %> |
+         <%= link_to '戻る', events_path %> |
+         <%= link_to '削除', @event, method: :delete, data: { confirm: '本当に削除しますか？' } %>
+    </div>
+  </div>
+</div>

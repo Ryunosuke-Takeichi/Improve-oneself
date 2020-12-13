@@ -1,9 +1,29 @@
-<div class="body">
+<script>
+  $("#main-navbar").removeClass("navbar-scroll")
+  $(window).scroll(function () {
+  var sc = $(window).scrollTop()
+  if (sc > 150) {
+    $("#main-navbar").addClass("navbar-scroll")
+  } 
+  else {
+    $("#main-navbar").removeClass("navbar-scroll")
+  }
+});
+</script>
+
+<section class="full-width-img">
   <div class="container">
-    <div class="row">
-      <h2>Improve-oneself</h2>
-      <%= link_to "ログイン", new_user_session_path %>
-      <%= link_to "新規登録", new_user_registration_path %>
+    <div class="box">
+      <ul class="subheading-text">
+        <li>[Go to the next stage]</li>
+        <li>ImproveOneself</li>
+      </ul>
     </div>
   </div>
-</div>
+</section>
+<section class="section-black">
+  <div class="container">
+    <h3>About</h3>
+    <p></p>
+  </div>
+</section>

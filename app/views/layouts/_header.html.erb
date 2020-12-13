@@ -1,24 +1,30 @@
-<header class="navbar navbar-top navbar-inverse">
-  <div class="container">
-    <nav class='nav navbar-nav navbar-left'>
-      <span></span>
+<header>
+    <nav id="main-navbar" class="navbar-scroll navbar navbar-default navbar-fixed-top">
+      <div class="container navbar-container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">ImproveOneself</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+  <ul class="nav navbar-nav navbar-right">
+    <% if user_signed_in? %>
+      <li class="nav-item"><%= link_to 'My page', user_path(current_user)%></li>
+      <li class="nav-item"><%= link_to 'Event', events_path %></li>
+      <li class="nav-item"><%= link_to 'Record', weight_records_path(current_user)%></li>
+      <li class="nav-item"><%= link_to 'Timeline' %></li>
+      <li class="nav-item"><%= link_to ' Log_out', destroy_user_session_path, method: :delete %></li>
+    <% else %>
+      <li class="nav-item"><%= link_to ' Home', root_path %></li>
+      <li class="nav-item"><%= link_to ' Sign_up', new_user_registration_path %></li>
+      <li class="nav-item"><%= link_to ' Log_in', new_user_session_path %></li>
+    <% end %>
+  </ul>
+</div>
+      </div>
     </nav>
-    <nav>
-      <ul class="nav navbar-nav navbar-right">
-        <% if user_signed_in? %>
-          <li><%= link_to 'マイページ', user_path(current_user)%></li>
-          <li><%= link_to 'カレンダー', events_path %></li>
-          <li><%= link_to 'グラフ', weight_records_path(current_user)%></li>
-          <li><%= link_to 'タイムライン' %></li>
-          <li><%= link_to '占い' %></li>
-          <li><%= link_to ' ログアウト', destroy_user_session_path, method: :delete %></li>
-        <% else %>
-          <li><%= link_to ' ホーム', root_path, class: 'glyphicon glyphicon-home home' %></li>
-          <li><%= link_to ' アバウト', about_path, class: 'glyphicon glyphicon-link about' %></li>
-          <li><%= link_to ' 新規登録', new_user_registration_path, class: 'glyphicon glyphicon-edit sign_up' %></li>
-          <li><%= link_to ' ログイン', new_user_session_path, class: 'glyphicon glyphicon-log-in sign_in'%></li>
-        <% end %>
-      </ul>
-    </nav>
-  </div>
-</header>
+  </header>

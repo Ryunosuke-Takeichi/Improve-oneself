@@ -1,6 +1,10 @@
-<h1>Editing Event</h1>
-
-<%= render 'form', event: @event %>
-
-<%= link_to 'Show', @event %> |
-<%= link_to 'Back', events_path %>
+<div class="body">
+  <div class="container">
+    <div class="row">
+      <h1>編集ページ</h1>
+       <%= render 'form', event: @event %>
+       <%= link_to 'Show', @event %> |
+       <%= link_to 'Back', events_path %> |
+    </div>
+  </div>
+</div>

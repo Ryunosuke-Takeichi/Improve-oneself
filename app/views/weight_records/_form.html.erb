@@ -18,7 +18,7 @@
   
   <div class="field">
     <%= form.label :date, '日付' %>
-    <%= form.datetime_field :date %>
+    <%= form.datetime_field :date, value: Time.now.strftime("%Y-%m-%dT%H:%M") %>
   </div>
 
   <div class="actions">
