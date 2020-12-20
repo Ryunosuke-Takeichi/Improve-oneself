@@ -1,37 +1,24 @@
-<%= form_with(model: event, local: true) do |form| %>
-  <% if event.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(event.errors.count, "error") %> prohibited this event from being saved:</h2>
-
-      <ul>
-      <% event.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+<div class="modal-body">
+  <%= form_with model: [current_user, event] do |f| %>
+    <div  class="col">
+      <p>
+        <span>タイトル</span>
+        <span><%= f.text_field :title, class: "form-control", placeholder: "タイトルを入力してください" %></span>
+      </p>
+      <span>開始日時</span>
+      <span><%= f.datetime_field  :start, placeholder: "XXXX-XX-XX", class:"field" %> ~ </span><br>
+      <span>終了日時</span>
+      <span><%= f.datetime_field :end, placeholder: "XXXX-XX-XX", class:"field" %></span><br>
+      <span>詳細
+      <%= f.text_field :body, class: "form-control", placeholder: "タイトルの詳細を記入してください" %>
+      </span>
+    </div>
+    <div class="modal-footer">
+      <%= f.submit "登録する", class: "btn btn-primary" %>
+      <%= f.hidden_field :user_id, :value => current_user.id %>
+      <%= link_to (user_events_path) do %>
+        <button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
       <% end %>
-      </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
-  </div>
-
-  <div class="field">
-    <%= form.label :body %>
-    <%= form.text_area :body %>
-  </div>
-
-  <div class="field">
-    <%= form.label :start_date %>
-    <%= form.datetime_select :start_date %>
-  </div>
-
-  <div class="field">
-    <%= form.label :end_date %>
-    <%= form.datetime_select :end_date %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+ </div>

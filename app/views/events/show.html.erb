@@ -15,17 +15,17 @@
 
         <p>
           <strong>Start date:</strong>
-          <%= @event.start_date %>
+          <%= @event.start %>
         </p>
 
         <p>
           <strong>End date:</strong>
-          <%= @event.end_date %>
+          <%= @event.end %>
         </p>
 
-         <%= link_to '編集', edit_event_path(@event) %> |
-         <%= link_to '戻る', events_path %> |
-         <%= link_to '削除', @event, method: :delete, data: { confirm: '本当に削除しますか？' } %>
+         <%= link_to '編集', edit_user_event_path(current_user,@event) %> |
+         <%= link_to '戻る', user_events_path %> |
+         <%= link_to '削除', user_event_path(current_user, @event), method: :delete, data: { confirm: '本当に削除しますか？' } %>
     </div>
   </div>
 </div>

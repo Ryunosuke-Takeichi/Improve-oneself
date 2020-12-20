@@ -68,3 +68,4 @@ gem 'jquery-rails'
 gem "chartkick"
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
+gem 'kaminari'

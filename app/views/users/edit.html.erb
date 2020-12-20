@@ -1,13 +1,14 @@
 <div class="body">
-  <div class="profile-container">
+  <div class="container">
     <div class="row">
-      <div class="col-xs-12">
+      <div class="col">
         <%= form_with model:@user, url:user_path, local: true do |f| %>
         <table class="table">
           <tr>
-            <th><%= attachment_image_tag @user, :profile_image, :fill, 60, 60, class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg"%></th>
-            <th><%= f.attachment_field :profile_image, placeholder: "プロフィール画像", class: "user-edit-form" %></th>
+            <td><%= attachment_image_tag @user, :profile_image, :fill, 60, 60, class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg"%></td>
+            <td><%= f.attachment_field :profile_image, placeholder: "プロフィール画像", class: "user-edit-form" %></td>
           </tr>
+          
           <tr>
             <th><%= f.label :name, "ニックネーム" %></th>
             <td></td>
@@ -16,7 +17,7 @@
           <tr>
             <th><%= f.label :introduction, "ひとこと" %></th>
             <td></td>
-            <td><%= f.text_area :introduction, class: "introduction" %></td>
+            <td><%= f.text_area :introduction, class: "introduction", size: "35*35" %></td>
           </tr>
           <tr>
             <th><%= f.label :height, "身長" %></th>
@@ -29,10 +30,12 @@
             <td><%= f.text_field :weight %></td>
           </tr>
         </table>
-        <div class="actions">
-		<%= f.submit %>
-		<% end %>
       </div>
-    </div>
+      <div class="col">
+        <div class="actions">
+		    <%= f.submit %>
+		    <% end %>
+      </div>
+      </div>
   </div>
 </div>

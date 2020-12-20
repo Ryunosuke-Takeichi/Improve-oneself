@@ -1,5 +1,5 @@
 <header>
-    <nav id="main-navbar" class="navbar-scroll navbar navbar-default navbar-fixed-top">
+    <nav id="main-navbar" class="navbar-scroll navbar navbar-default navbar-top">
       <div class="container navbar-container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -14,9 +14,9 @@
   <ul class="nav navbar-nav navbar-right">
     <% if user_signed_in? %>
       <li class="nav-item"><%= link_to 'My page', user_path(current_user)%></li>
-      <li class="nav-item"><%= link_to 'Event', events_path %></li>
-      <li class="nav-item"><%= link_to 'Record', weight_records_path(current_user)%></li>
-      <li class="nav-item"><%= link_to 'Timeline' %></li>
+      <li class="nav-item"><%= link_to 'Event', user_events_path(current_user) %></li>
+      <li class="nav-item"><%= link_to 'Record', user_weight_records_path(current_user)%></li>
+      <li class="nav-item"><%= link_to 'Timeline', tweets_path %></li>
       <li class="nav-item"><%= link_to ' Log_out', destroy_user_session_path, method: :delete %></li>
     <% else %>
       <li class="nav-item"><%= link_to ' Home', root_path %></li>

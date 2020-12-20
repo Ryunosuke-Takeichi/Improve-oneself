@@ -1,26 +1,41 @@
 class UsersController < ApplicationController
-  
+  before_action :authenticate_user!
   def index
     @users = User.all
   end
   
   def show
     @user = User.find(params[:id])
+    @currentUserEntry=Entry.where(user_id: current_user.id)
+    @userEntry=Entry.where(user_id: @user.id)
+    if @user.id == current_user.id
+    else
+      @currentUserEntry.each do |cu|
+        @userEntry.each do |u|
+          if cu.room_id == u.room_id then
+            @isRoom = true
+            @roomId = cu.room_id
+          end
+        end
+      end
+      if @isRoom
+      else
+        @room = Room.new
+        @entry = Entry.new
+      end
+    end
   end
   
-  def user_tweets
-    @user = User.find(params[:id])
-    @tweets = Tweet.where(user_id: @user.id).all.order("created_at DESC").page(params[:page]).per(20)
-  end
-  
-  def follows
+  def following
     user = User.find(params[:id])
-    @users = user.followings
+    @users = user.followings.page(params[:page]).per(5)
+    render 'following'
   end
   
   def followers
     user = User.find(params[:id])
-    @users = user.followers
+    @users = user.followers.page(params[:page]).per(5)
+    render 'followers'
   end
   
   def edit
