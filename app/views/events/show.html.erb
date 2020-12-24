@@ -1,31 +1,29 @@
-<div class="body">
-  <div class="container">
-    <div class="row">
-      <p id="notice"><%= notice %></p>
+<div class="event_container">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <p>
+        <strong>Title:</strong>
+        <%= @event.title %>
+      </p>
 
-        <p>
-          <strong>Title:</strong>
-          <%= @event.title %>
-        </p>
+      <p>
+        <strong>Body:</strong>
+        <%= @event.body %>
+      </p>
 
-        <p>
-          <strong>Body:</strong>
-          <%= @event.body %>
-        </p>
+      <p>
+        <strong>Start:</strong>
+        <%= @event.start.strftime("%Y-%m-%d %H:%M:%S") %>
+      </p>
 
-        <p>
-          <strong>Start date:</strong>
-          <%= @event.start %>
-        </p>
+      <p>
+        <strong>End:</strong>
+        <%= @event.end.strftime("%Y-%m-%d %H:%M:%S") %>
+      </p>
 
-        <p>
-          <strong>End date:</strong>
-          <%= @event.end %>
-        </p>
-
-         <%= link_to '編集', edit_user_event_path(current_user,@event) %> |
-         <%= link_to '戻る', user_events_path %> |
-         <%= link_to '削除', user_event_path(current_user, @event), method: :delete, data: { confirm: '本当に削除しますか？' } %>
+      <%= link_to '編集', edit_user_event_path(current_user,@event) %> |
+      <%= link_to '戻る', user_events_path %> |
+    <%= link_to '削除', user_event_path(current_user, @event), method: :delete, data: { confirm: '本当に削除しますか？' } %>
     </div>
   </div>
 </div>

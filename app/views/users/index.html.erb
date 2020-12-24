@@ -1,27 +1,30 @@
-<div class="body">
-  <div class="container">
-    <div class="row">
-      <table class="table table-hover">
-        <thead>
-          <tr>
-            <th>ニックネーム</th>
-            <th>ひとこと</th>
-            <th></th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-        <% @users.each do |user| %>
-          <tr>
-            <td><%= user.name %></td>
-            <td><%= user.introduction %></td>
-            <td>
-            </td>
-            <td></td>
-          </tr>
-        <% end %>
-        </tbody>
-      </table>
-    </div>
+<div class="user_container" >
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1"></div>
+    <table class="table table-hover">
+    　<thead>
+        <tr>
+        　<th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody class="user">
+      <% @users.each do |user| %>
+      <tr>
+        <td><%= attachment_image_tag(user, :profile_image, :fill, 50, 50, fallback: "logo.png", size:'50x50', class: "img-circle profile-img") %></td>
+        <td><%= link_to user.name, user_path(user), class: "user_#{user.id}" %></td>
+        <td><%= user.introduction %></td>
+        <td><p>フォロー:<%= user.followings.count %></td>
+        <td><p>フォロワー:<%= user.followers.count %></td>
+        <td><p>つぶやき:<%= user.tweets.count %></p></td>
+      </tr>
+      <% end %>
+      </tbody>
+    </table>
   </div>
+</div>
 </div>

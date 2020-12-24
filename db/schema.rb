@@ -10,23 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_18_165834) do
+ActiveRecord::Schema.define(version: 2020_12_24_063716) do
 
-  create_table "comments", force: :cascade do |t|
-    t.text "comment"
-    t.integer "tweet_id"
+  create_table "chats", force: :cascade do |t|
     t.integer "user_id"
+    t.integer "room_id"
+    t.string "message"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "entries", force: :cascade do |t|
+  create_table "comments", force: :cascade do |t|
+    t.text "content"
     t.integer "user_id"
-    t.integer "room_id"
+    t.integer "tweet_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["room_id"], name: "index_entries_on_room_id"
-    t.index ["user_id"], name: "index_entries_on_user_id"
+    t.index ["tweet_id"], name: "index_comments_on_tweet_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "events", force: :cascade do |t|
@@ -58,18 +59,7 @@ ActiveRecord::Schema.define(version: 2020_12_18_165834) do
     t.index ["following_id"], name: "index_follow_relationships_on_following_id"
   end
 
-  create_table "messages", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "room_id"
-    t.text "content"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["room_id"], name: "index_messages_on_room_id"
-    t.index ["user_id"], name: "index_messages_on_user_id"
-  end
-
   create_table "rooms", force: :cascade do |t|
-    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -77,6 +67,13 @@ ActiveRecord::Schema.define(version: 2020_12_18_165834) do
   create_table "tweets", force: :cascade do |t|
     t.text "body"
     t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "user_rooms", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "room_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

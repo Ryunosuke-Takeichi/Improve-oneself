@@ -1,27 +1,23 @@
-<%= form_with model: [current_user,weight_record], local: true do |form| %>
-  <% if weight_record.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(weight_record.errors.count, "error") %> prohibited this weight_record from being saved:</h2>
-
-      <ul>
-      <% weight_record.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :weight, '体重' %>
-    <%= form.text_field :weight %>
+<div class="container">
+  <div class="model-body">
+    <%= form_with model: [current_user,weight_record], local: true do |form| %>
+      <div class="col">
+        <p>
+          <span>体重</span>
+          <span><%= form.text_field :weight, class: "form-control", placeholder: "体重を入力してください" %></span>
+        </p>
+        <p>
+          <span>日付</span>
+          <span><%= form.datetime_field :date, value: Time.now.strftime("%Y-%m-%dT%H:%M") %></span>
+        </p>
+      </div>
+      <div class="modal-footer">
+        <%= form.submit "登録する", class: "btn btn-primary" %>
+        <%= form.hidden_field :user_id, :value => current_user.id %>
+        <%= link_to (user_weight_records_path) do %>
+          <button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
+        <% end %>
+      </div>
+    <% end %>
   </div>
-  
-  <div class="field">
-    <%= form.label :date, '日付' %>
-    <%= form.datetime_field :date, value: Time.now.strftime("%Y-%m-%dT%H:%M") %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>

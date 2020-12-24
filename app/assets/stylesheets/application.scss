@@ -17,6 +17,22 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+
+
+.pagination>li>a {          
+  border: none;    
+  color: #696969;   
+}
+
+.pagination>.active>a {     
+  background: #93c9ff;     
+  border-radius: 15px;
+}
+/*ホバー時のデザイン*/
+.pagination>li>a:hover {        
+  border-radius: 15px;    
+}
+
 body {
   font-family: "Open Sans", Helvetica, sans-serif;
 }
@@ -243,12 +259,16 @@ body {
 body {
 }
 
-input[type="text"] {
-  width: 300px;
-  height: 40px;
+.sign_up {
+  margin: 100px auto;
+  text-align: center;
 }
 
-input[type="email"] {
+.login {
+  margin: 100px auto;
+  text-align: center;
+}
+input[type="text"] {
   width: 300px;
   height: 40px;
 }
@@ -257,12 +277,86 @@ input[type="password"] {
   width: 300px;
   height: 40px;
 }
-
-input[type="submit"] {
+    
+input[type="name"] {
+  width: 300px;
+  height: 40px;
+}
+    
+input[type="height"] {
   width: 300px;
   height: 40px;
 }
 
-.profile .table {
-  text-align :center;
+input[type="weight"] {
+    width: 300px;
+    height: 40px;
+  }
+    
+  input[type="email"] {
+    width: 300px;
+    height: 40px;
+  }
+.col-xs-12 .input[type="submit"] {
+    margin-top :15px;
+    }
+
+
+// user
+
+.user_container {
+  margin: 100px
 }
+
+.image {
+  padding-left: 60px;
+  padding-bottom: 30px;
+}
+
+.user {
+  text-align : center;
+}
+
+.table {
+  text-align : center;
+}
+
+// record
+
+.record_container {
+   margin: 100px;
+   padding: 50px;
+}
+
+.records_container {
+  margin: 100px;
+}
+
+// tweet
+
+.tweet_container{
+  margin-top: 120px;
+  margin-left: 40px;
+}
+
+.tweets_container{
+  margin: 70px;
+}
+
+.tweet_show_container{
+  margin: 130px;
+}
+
+.tweet_show_container .col-xs-7 {
+ padding-top: 50px; 
+}
+
+// event
+.event_container{
+  margin : 100px;
+}
+
+.events_container{
+   margin: 90px;
+}
+

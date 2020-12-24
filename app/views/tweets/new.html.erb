@@ -1,12 +1,17 @@
-<div class="container">
+<div class="tweet_container">
   <div class="row">
-    <%= form_with model: @tweet, rocal: true do |f| %>
-      <%= f.label :body, 'ツイート内容' %>
-      <%= f.text_field :body %>
-  </div>
-  
-  <div class="action_row">
-      <%= f.submit "送信" %>
+    <div class="col-md-4 col-md-offset-4">
+      <div class="row">
+        <%= form_with model: @tweet, rocal: true do |f| %>
+        <h2>New Tweet</h2>
+          <div class="field_row">
+            <%= f.text_area :body, class: "col-xs-12", size: "5x10"  %>
+          </div>
+          <div class="actions row" style= "margin-top 20px">
+            <%= f.submit "送信" ,class: "pull-right"%>
+          </div>
+        <% end %>
+      </div>
     </div>
-    <% end %>
+  </div>
 </div>

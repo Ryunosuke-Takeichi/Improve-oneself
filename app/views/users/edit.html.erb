@@ -1,41 +1,39 @@
-<div class="body">
-  <div class="container">
-    <div class="row">
-      <div class="col">
-        <%= form_with model:@user, url:user_path, local: true do |f| %>
-        <table class="table">
-          <tr>
-            <td><%= attachment_image_tag @user, :profile_image, :fill, 60, 60, class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg"%></td>
-            <td><%= f.attachment_field :profile_image, placeholder: "プロフィール画像", class: "user-edit-form" %></td>
-          </tr>
-          
+<div class="user_container">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <%= form_with model:@user, url:user_path, local: true do |f| %>
+      <div class="col-md-3">
+        <div class="image"><%= attachment_image_tag @user, :profile_image, :fill, 190, 190, class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg"%></div>
+        <%= f.attachment_field :profile_image, placeholder: "プロフィール画像", class: "user-edit-form" %>
+      </div>
+      <div class="col-md-9">
+        <table class="table user">
           <tr>
             <th><%= f.label :name, "ニックネーム" %></th>
             <td></td>
-            <td><%= f.text_field :name, class: "name" %></td>
+            <th><%= f.text_field :name, class: "name" %></th>
           </tr>
           <tr>
             <th><%= f.label :introduction, "ひとこと" %></th>
             <td></td>
-            <td><%= f.text_area :introduction, class: "introduction", size: "35*35" %></td>
+            <th><%= f.text_area :introduction, class: "introduction"%></th>
           </tr>
           <tr>
             <th><%= f.label :height, "身長" %></th>
             <td></td>
-            <td><%= f.text_field :height %></td>
+            <th><%= f.text_field :height %></th>
           </tr>
           <tr>
             <th><%= f.label :weight, "体重" %></th>
             <td></td>
-            <td><%= f.text_field :weight %></td>
+            <th><%= f.text_field :weight %></th>
           </tr>
         </table>
+        <div class="col-xs-12 text-center">
+		      <%= f.submit "更新" %>
+		      <% end %>
+    　　</div>
       </div>
-      <div class="col">
-        <div class="actions">
-		    <%= f.submit %>
-		    <% end %>
-      </div>
-      </div>
+    </div>
   </div>
 </div>

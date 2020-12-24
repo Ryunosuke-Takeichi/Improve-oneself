@@ -1,24 +1,26 @@
-<div class="modal-body">
-  <%= form_with model: [current_user, event] do |f| %>
-    <div  class="col">
-      <p>
-        <span>タイトル</span>
-        <span><%= f.text_field :title, class: "form-control", placeholder: "タイトルを入力してください" %></span>
-      </p>
-      <span>開始日時</span>
-      <span><%= f.datetime_field  :start, placeholder: "XXXX-XX-XX", class:"field" %> ~ </span><br>
-      <span>終了日時</span>
-      <span><%= f.datetime_field :end, placeholder: "XXXX-XX-XX", class:"field" %></span><br>
-      <span>詳細
-      <%= f.text_field :body, class: "form-control", placeholder: "タイトルの詳細を記入してください" %>
-      </span>
-    </div>
-    <div class="modal-footer">
-      <%= f.submit "登録する", class: "btn btn-primary" %>
-      <%= f.hidden_field :user_id, :value => current_user.id %>
-      <%= link_to (user_events_path) do %>
-        <button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
-      <% end %>
-    </div>
-  <% end %>
+<div class="container">
+  <div class="modal-body">
+    <%= form_with model: [current_user, event] do |f| %>
+      <div  class="col">
+        <p>
+          <span>タイトル</span>
+          <span><%= f.text_field :title, class: "form-control", placeholder: "タイトルを入力してください" %></span>
+        </p>
+        <span>開始日時</span>
+        <span><%= f.datetime_field  :start, placeholder: "XXXX-XX-XX", class:"field" %> ~ </span><br>
+        <span>終了日時</span>
+        <span><%= f.datetime_field :end, placeholder: "XXXX-XX-XX", class:"field" %></span><br>
+        <span>詳細
+        <%= f.text_field :body, class: "form-control", placeholder: "タイトルの詳細を記入してください" %>
+        </span>
+      </div>
+      <div class="modal-footer">
+        <%= f.submit "登録する", class: "btn btn-primary" %>
+        <%= f.hidden_field :user_id, :value => current_user.id %>
+        <%= link_to (user_events_path) do %>
+          <button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
+        <% end %>
+      </div>
+    <% end %>
+   </div>
  </div>

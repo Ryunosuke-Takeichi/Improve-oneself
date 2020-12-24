@@ -1,28 +1,37 @@
-<div class="container">
+<div class="tweets_container">
   <div class="row">
-    <table class="table table-hover table-inverse">
-      <thead>
-        <tr>
-          <th></th>
-          <th></th>
-          <th></th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @tweets.each do |tweet| %>
+    <div class="col-md-8 col-md-offset-2">
+      <h2>TimeLine</h2>
+      <div class="new">
+        <%= link_to  new_tweet_path do %>
+          <i class="fas fa-pencil-alt"></i>
+        <% end %>
+      </div>
+      <table class="table table-hover table-inverse">
+        <thead>
           <tr>
-            <td>
-              <%= link_to user_path(tweet.user) do %>
-               <%= attachment_image_tag(tweet.user, :profile_image, :fill, 50, 50) %>
-              <% end %>
-            </td>
-            <td><%=link_to tweet.body, tweet_path(tweet.id) %></td>
-            <td><%= render partial: 'favorites/favorite', locals: { tweet: tweet} %></td>
-            <td></td>
+            <th></th>
+            <th></th>
+            <th></th>
           </tr>
+        </thead>
+        <tbody>
+          <% @tweets.each do |tweet| %>
+            <tr>
+              <td>
+                <%= link_to user_path(tweet.user) do %>
+                 <%= attachment_image_tag(tweet.user, :profile_image, :fill, 40, 40, format: 'jpeg', class: "img-circle profile-img") %>
+                <% end %>
+              </td>
+              <td><%=link_to tweet.body, tweet_path(tweet.id) %></td>
+              <td><%= render partial: 'favorites/favorite', locals: { tweet: tweet} %></td>
+              <td><p>コメント<%= tweet.comments.count %></p></td>
+              <td><%= tweet.created_at.strftime('%Y/%m/%d %H:%M:%S') %></td>
+              <td></td>
+            </tr>
           <% end %>
-      </tbody>
-    </table>
+        </tbody>
+      </table>
+      <%= paginate @tweets %>
   </div>
 </div>

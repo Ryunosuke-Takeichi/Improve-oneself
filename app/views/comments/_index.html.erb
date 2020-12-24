@@ -1,0 +1,49 @@
+<%= comments.count %>件のコメント
+<h6 class="more" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">もっと見る....</h6>
+<table class="table">
+  <% comments.first(2).each do |comment| %>
+    <% unless comment.id.nil? %>
+    <tr>
+      <td>
+        <%= attachment_image_tag comment.user, :profile_image, fallback: "no_image.jpg", class:"comment-image", size: "40x40" %><br>
+        <%= link_to comment.user.name, user_path(comment.user.id) %>
+      </td>
+      <td>
+        <%= comment.content %>
+      </td>
+      <% if comment.user == current_user %>
+      <td>
+        <%= link_to tweet_comment_path(comment.tweet_id, comment.id), method: :delete, remote: true, class: "comment_destroy" do %>
+          <i class="fas fa-trash" style="color: black;"></i>
+        <% end %>
+      </td>
+      <% end %>
+      <td><%= comment.created_at.strftime('%Y/%m/%d %H:%M:%S') %></td>
+    </tr>
+    <% end %>
+  <% end %>
+</table>
+
+<div class="collapse" id="collapseExample">
+  <table class="table">
+    <% comments.offset(2).each do |comment| %>
+    <% unless comment.id.nil? %>
+    <tr>
+      <td>
+        <%= attachment_image_tag comment.user, :profile_image, fallback: "no_image.jpg", class:"comment-image", size: "40x40" %><br>
+        <%= link_to comment.user.name, user_path(comment.user.id) %>
+      </td>
+      <td><%= comment.content %></td>
+      <% if comment.user == current_user %>
+      <td>
+        <%= link_to tweet_comment_path(comment.tweet_id, comment.id), method: :delete, remote: true, class: "comment_destroy" do %>
+          <i class="fas fa-trash" style="color: black;"></i>
+        <% end %>
+      </td>
+      <% end %>
+      <td><%= comment.created_at.strftime('%Y/%m/%d %H:%M:%S') %></td>
+    </tr>
+    <% end %>
+    <% end %>
+  </table>
+</div>

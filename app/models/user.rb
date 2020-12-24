@@ -5,16 +5,17 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   attachment :profile_image
   has_many :weight_records
-  has_many :events
+  has_many :events, dependent: :destroy
   has_many :tweets, dependent: :destroy
   has_many :comments, dependent: :destroy
-  has_many :favorites
+  has_many :favorites, dependent: :destroy
   has_many :following_relationships, foreign_key: "follower_id", class_name: "FollowRelationship",  dependent: :destroy
   has_many :followings, through: :following_relationships
   has_many :follower_relationships, foreign_key: "following_id", class_name: "FollowRelationship", dependent: :destroy
   has_many :followers, through: :follower_relationships
-  has_many :messages, dependent: :destroy
-  has_many :entries, dependent: :destroy
+  has_many :user_rooms, dependent: :destroy
+  has_many :chats, dependent: :destroy
+  has_many :rooms, through: :user_rooms, dependent: :destroy
 
   
   def following?(user)

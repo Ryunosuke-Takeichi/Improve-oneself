@@ -9,8 +9,8 @@ Rails.application.routes.draw do
     resources :comments, only: [:create, :destroy]
     resource :favorites, only: [:create, :destroy]
   end
-  resources :messages, only: [:create]
-  resources :rooms, only: [:create,:show]
+  get 'chat/:id' => 'chats#show', as: 'chat'
+  resources :chats, only: [:create, :show]
   resources :users, only: [:show,:index,:edit,:update] do
     resources :events
     resources :weight_records

@@ -1,4 +1,6 @@
 class EventsController < ApplicationController
+  before_action :authenticate_user!
+  
   def index
     @events = Event.where(user_id: params[:user_id])
   end
@@ -39,5 +41,4 @@ class EventsController < ApplicationController
   def event_params
     params.require(:event).permit(:title, :body, :start, :end, :user_id)
   end
-  
 end

@@ -3,7 +3,7 @@ class WeightRecordsController < ApplicationController
   before_action :set_weight_record, only: [:show, :edit, :update, :destroy]
   
   def index
-    @weight_records = current_user.weight_records.order(date:"ASC")
+    @weight_records = current_user.weight_records.order(date:"ASC").page(params[:page]).per(20)
   end
   
   def new

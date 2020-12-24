@@ -1,8 +1,8 @@
-<div class="body">
-  <div class="container">
-    <div class="row">
+<div class="records_container">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
       <p id="notice"><%= notice %></p>
-      <h1>体重管理</h1>
+      <h1>Weight Records</h1>
       <%= line_chart @weight_records.pluck(:date, :weight) %> 
         <table class="table table-hover">
           <thead>
@@ -10,7 +10,7 @@
               <th>体重</th>
               <th>日付</th>
               <th colspan="3"></th>
-            </tr>
+              </tr>
           </thead>
           <tbody>
             <% @weight_records.each do |weight_record| %>
@@ -19,20 +19,22 @@
                 <td><%= weight_record.date.strftime("%Y-%m-%d %H:%M") %></td>
                 <td>
                   <i class="fas fa-pencil-alt"></i>
-                    <%= link_to '編集', edit_user_weight_record_path(current_user,weight_record) %>
+                  <%= link_to '編集', edit_user_weight_record_path(current_user,weight_record) %>
                 </td>
                 <td>
                   <i class="fas fa-trash-alt"></i>
-                    <%= link_to '削除', user_weight_record_path(current_user,weight_record), method: :delete, data: { confirm: '本当に削除しますか?' } %>
+                  <%= link_to '削除', user_weight_record_path(current_user,weight_record), method: :delete, data: { confirm: '本当に削除しますか?' } %>
                 </td>
               </tr>
             <% end %>
           </tbody>
-          </table>
-        <br>
-        <%= link_to new_user_weight_record_path do %>
-          <i class="fas fa-plus-square fa-5x"></i>
-        <% end %>
+        </table>
+         <div class="col-md-12 col-md-offset-12">
+          <%= link_to new_user_weight_record_path do %>
+           <i class="fas fa-pen fa-4x"></i>
+          <% end %>
+          </div>
     </div>
+    <%= paginate @weight_records %>
   </div>
 </div>

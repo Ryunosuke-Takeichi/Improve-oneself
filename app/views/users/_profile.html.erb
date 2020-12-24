@@ -1,52 +1,58 @@
-<div class="profile">
-  
-  <table class="table table-hover">
-    <tr>
-      <th><%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', class: "profile-img", fallback: "logo.png", size:'100x100' %></th>
-    </tr>
-    <tr>
-      <th>ニックネーム</th>
-      <th><%= user.name %></th>
-    </tr>
-    <tr>
-      <th>ひとこと</th>
-      <th><%= user.introduction %></th>
-    </tr>
-    <tr>
-      <th>身長</th>
-      <th><%= user.height %>cm</th>
-    </tr>
-    <tr>
-      <th>体重</th>
-      <th><%= user.weight %>kg</th>
-    </tr>
-    <tr>
-      <th>BMI</th>
-      <th><%= user.bmi.round(1) %></th>
-    </tr>
-    <tr>
-      <th><p><%= link_to "フォロー(#{@user.followings.count})", following_user_path(@user), class: "nav-link" %></p></th>
-      <th><p><%= link_to "フォロワー(#{@user.followers.count})", followers_user_path(@user), class: "nav-link" %></p></th>
-    </tr>
-  </table>
-  
-  <div class="col-xs-12">
-    <% if signed_in? && @user != current_user%>
-    <div id="follow_form">
-      <% if current_user.following?(@user) %>
-        <%= render 'unfollow', user: @user %>
-      <% else %>
-        <%= render 'follow', user: @user %>
-      <% end %>
-    </div>
-  <% end %>
+<table class="table table-hover">
+  <div class="image">
+    <%= attachment_image_tag @user, :profile_image,  format: 'jpeg', class: "img-circle profile-img", fallback: "logo.png", size:'150x150' %>
   </div>
+  <tr>
+    <th class="user">ニックネーム</th>
+    <th class="user"><%= user.name %></th>
+  </tr>
+  <tr>
+    <th class="user">ひとこと</th>
+    <th class="user"><%= user.introduction %></th>
+  </tr>
   <% if @user.id == current_user.id %>
-    <div class="row">
-      <%= link_to 'プロフィールを編集', edit_user_path(user), class: " btn btn-default edit_user_#{user.id}" %>
-    </div>
-    <div class="row">
-      <%= link_to '新しくつぶやく', new_tweet_path(user), class: " btn btn-default edit_user_#{user.id}" %>
-    </div>
+  <tr>
+    <th class="user">身長</th>
+    <th class="user"><%= user.height %>cm</th>
+  </tr>
+  <tr>
+    <th class="user">体重</th>
+    <th class="user"><%= user.weight %>kg</th>
+  </tr>
+  <tr>
+    <th class="user">BMI</th>
+    <th class="user"><%= user.bmi.round(1) %></th>
+  </tr>
+  <% end %>
+  <tr>
+    <th class="user"><p><%= link_to "フォロー(#{@user.followings.count})", following_user_path(@user), class: "nav-link" %></p></th>
+    <th class="user"><p><%= link_to "フォロワー(#{@user.followers.count})", followers_user_path(@user), class: "nav-link" %></p></th>
+  </tr>
+    
+  <tr>
+    <td class="user">
+      <% if signed_in? && @user != current_user%>
+        <div class="row">
+          <div id="follow_form">
+            <% if current_user.following?(@user) %>
+              <%= render 'unfollow', user: @user %>
+            <% else %>
+              <%= render 'follow', user: @user %>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </td>
+    <td class="user">
+      <% if current_user != @user %>
+        <%= link_to 'メッセージ', chat_path(@user.id), class: "btn btn-warning w-130px"%>
+      <% end %> 
+    </td>
+  </tr>
+  </table>
+
+<div class="row">
+  <% if @user.id == current_user.id %>
+    <%= link_to '' , edit_user_path(@user), class: " col-xs-12 btn btn-default glyphicon glyphicon-wrench edit_user_#{@user.id}" %>
   <% end %>
 </div>

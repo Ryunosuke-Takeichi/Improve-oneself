@@ -1,4 +1,4 @@
-<div class="body-container">
+<div class="container">
   <div class="sign_up">
     <h2 class="form text-center">SIGN UP</h2>
     <%= form_with model: @user, url: user_registration_path, id: 'new_user', class: 'new_user', local: true do |f| %>
@@ -6,7 +6,7 @@
   
     <div class="field">
       <%= f.label :name, "ニックネーム" ,class: "form" %><br />
-      <%= f.text_field :name, autofocus: true, placeholder: "田中太郎", autocomplete: "name" %>
+      <%= f.text_field :name, autofocus: true, placeholder: "山田太郎", autocomplete: "name" %>
     </div>
   
     <div class="field">
@@ -16,7 +16,7 @@
   
      <div class="weight">
       <%= f.label :weight, "体重" ,class: "form" %><br />
-      <%= f.text_field :weight, autofocus: true, placeholder: "**.*kg", autocomplete: "weight" %>
+      <%= f.text_field :weight, autofocus: true, placeholder: "***kg", autocomplete: "weight" %>
     </div>
 
     <div class="field">
