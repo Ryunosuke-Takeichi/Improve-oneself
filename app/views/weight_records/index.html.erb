@@ -1,7 +1,6 @@
 <div class="records_container">
   <div class="row">
     <div class="col-md-8 col-md-offset-2">
-      <p id="notice"><%= notice %></p>
       <h1>Weight Records</h1>
       <%= line_chart @weight_records.pluck(:date, :weight) %> 
         <table class="table table-hover">
@@ -29,12 +28,12 @@
             <% end %>
           </tbody>
         </table>
-         <div class="col-md-12 col-md-offset-12">
+        <div class="col-md-12 col-md-offset-12">
           <%= link_to new_user_weight_record_path do %>
-           <i class="fas fa-pen fa-4x"></i>
+            <i class="fas fa-pen fa-4x"></i>
           <% end %>
-          </div>
-    </div>
+        </div>
+      </div>
     <%= paginate @weight_records %>
   </div>
 </div>

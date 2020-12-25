@@ -71,7 +71,9 @@ gem "chartkick"
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
 gem 'kaminari'
-
+gem 'ransack'
+gem 'rubocop-airbnb'
+gem 'rails-i18n'
 gem 'dotenv-rails'
 group :production do
   gem 'mysql2'

@@ -1,43 +1,41 @@
 <div class="user_container">
-    <div class="row">
-      <div class="col-xs-3">
-        <%= render 'users/profile', user: @user%>
-      </div>
-        <div class="col-xs-9">
-        <h2>Post</h2>
-        <table class="table table-hover table-inverse">
-          <thead>
-            <tr>
-              <th></th>
-              <th></th>
-              <th></th>
-              <th colspan="3"></th>
-            </tr>
-          </thead>
-          <tbody class="user">
-            <% @tweets.each do |tweet| %>
-            <tr>
-            <td>
-              <%= link_to user_path(tweet.user) do %>
-               <%= attachment_image_tag(tweet.user, :profile_image, :fill, 50, 50, format: 'jpeg', class: "img-circle profile-img") %>
-              <% end %>
-            </td>
-            <td><%=link_to tweet.body, tweet_path(tweet.id) %></td>
-            <td><p>いいね<%= tweet.favorites.count %></p></td>
-            <td><p>コメント<%= tweet.comments.count %></p></td>
-            <td><%= tweet.created_at.strftime('%Y/%m/%d %H:%M:%S') %></td>
-          </tr>
-          <% end %>
-          </tbody>
-        </table>
-        <%= paginate @tweets %>
-         
-      </div>
-      
+  <div class="row">
+    <div class="col-xs-3">
+      <%= render 'users/profile', user: @user%>
     </div>
-    <div class="col-md-8 col-md-offset-11">
-           <%= link_to new_tweet_path do %>
-            <i class="fas fa-pencil-alt fa-4x"></i>
+    <div class="col-xs-9">
+      <h2>Post</h2>
+      <table class="table table-hover table-inverse">
+        <thead>
+          <tr>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody class="user">
+          <% @tweets.each do |tweet| %>
+            <tr>
+              <td>
+                <%= link_to user_path(tweet.user) do %>
+                  <%= attachment_image_tag(tweet.user, :profile_image, :fill, 50, 50, fallback: "logo.png", size:'40x40', format: 'jpeg', class: "img-circle profile-img") %>
+                <% end %>
+              </td>
+              <td><%=link_to tweet.body, tweet_path(tweet.id) %></td>
+              <td><p>いいね<%= tweet.favorites.count %></p></td>
+              <td><p>コメント<%= tweet.comments.count %></p></td>
+              <td><%= tweet.created_at.strftime('%Y/%m/%d %H:%M:%S') %></td>
+            </tr>
           <% end %>
-        </div>
+        </tbody>
+      </table>
+      <%= paginate @tweets %>
+    </div>
+  </div>
+  <div class="col-md-8 col-md-offset-11">
+    <%= link_to new_tweet_path do %>
+      <i class="fas fa-pencil-alt fa-4x"></i>
+    <% end %>
+  </div>
 </div>

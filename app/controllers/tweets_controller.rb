@@ -5,7 +5,7 @@ class TweetsController < ApplicationController
   end
 
   def index
-    @tweets = Tweet.all.search(params[:search]).order(created_at: :desc).page(params[:page]).per(20)
+    @tweets = Tweet.all.order(created_at: :desc).page(params[:page]).per(20)
     @tweet = Tweet.new
   end
 
@@ -21,20 +21,20 @@ class TweetsController < ApplicationController
     @tweet.user_id = current_user.id
     @tweet.save
     if redirect_to tweets_path
-    else 
+    else
       redirect_to new_tweet_path
     end
   end
-  
+
   def destroy
     @tweet = Tweet.find(params[:id])
     @tweet.destroy
     redirect_to tweets_path
   end
-  
+
   private
-    def tweet_params
-      params.require(:tweet).permit(:body)
-    end
-    
+
+  def tweet_params
+    params.require(:tweet).permit(:body)
+  end
 end

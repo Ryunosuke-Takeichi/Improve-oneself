@@ -256,6 +256,10 @@ body {
   background: linear-gradient(#363437, #121112);
 }
 
+footer {
+  color: rgba(0, 0, 0, 0.5);
+}
+
 body {
 }
 
@@ -282,24 +286,24 @@ input[type="name"] {
   width: 300px;
   height: 40px;
 }
-    
+
 input[type="height"] {
   width: 300px;
   height: 40px;
 }
 
 input[type="weight"] {
-    width: 300px;
-    height: 40px;
-  }
+  width: 300px;
+  height: 40px;
+}
     
-  input[type="email"] {
-    width: 300px;
-    height: 40px;
-  }
+input[type="email"] {
+  width: 300px;
+  height: 40px;
+}
 .col-xs-12 .input[type="submit"] {
-    margin-top :15px;
-    }
+  margin-top :15px;
+}
 
 
 // user
@@ -321,6 +325,10 @@ input[type="weight"] {
   text-align : center;
 }
 
+.user_container .introduction {
+  width: 300px;
+  height: 82px;
+}
 // record
 
 .record_container {
